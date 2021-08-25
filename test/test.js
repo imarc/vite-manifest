@@ -5,6 +5,8 @@ import viteManifest from '../index.js';
 
 describe('viteManifest test suite', function() {
   before(async function() {
+    this.timeout(10000);
+
     return build({
       root: resolve(resolve(), './test/assets/'),
       build: {
