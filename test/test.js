@@ -5,7 +5,7 @@ import viteManifest from '../index.js';
 
 describe('viteManifest test suite', function() {
   before(async function() {
-    await build({
+    return build({
       root: resolve(resolve(), './test/assets/'),
       build: {
         manifest: true,
@@ -16,8 +16,9 @@ describe('viteManifest test suite', function() {
           },
         },
       },
+    }).then(() => {
+      this.viteManifest = viteManifest(resolve(resolve(), './test/assets/dist/manifest.json'))
     })
-    this.viteManifest = viteManifest(resolve(resolve(), './test/assets/dist/manifest.json'))
   })
 
   it('returns an array', function() {
